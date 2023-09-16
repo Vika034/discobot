@@ -1,0 +1,28 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='/', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Привет пользователь! Я {bot.user}!')
+    await ctx.send(f'как дела?')
+    await ctx.send(f'надеюсь всё хорошо)<3')
+
+@bot.command()
+async def misha(ctx):
+    await ctx.send(f'Мишаа!)')
+    await ctx.send(f'он хорошый хомяк)')
+
+@bot.command()
+async def bye(ctx):
+    await ctx.send(f'пока пользователь, до новых встреч)<3')
+
+bot.run("ТУТ СЕКРЕТНЫЙ ТОКЕН")
